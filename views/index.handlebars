@@ -1,7 +1,33 @@
-<div id="wrapper">
-      <h1>Note Scraper</h1>
-      <h2><i>This homework is hard.</i></h2>
-      <div id="articles"></div>
-      <div id="comment"></div>
-    </div>
-    
+<h1>Guineenews</h1>
+<div class="row">
+{{#each articles}}
+
+  <div class='fixedHeight col-xs-4'>
+    <div>
+     <h3>{{this.title}}</h3>
+    </div> 
+    <div>
+     <h4><p><a href="{{this.link}}">Article Link</a></p></h4>
+    </div><br>
+    <div class="Form">
+    <p>Comments:</p>
+    <ul>
+    {{#each comment}}
+      <div id="noteBox">
+      
+      {{this.body}}
+      
+      </div>
+    {{/each}}
+    </ul>
+    </div><br>
+      <form action="/articles/{{this._id}}" method="POST" >
+        <input placeholder="Type a comment!" type="text" name="title" class="input" required><br>
+        <input type="text" name="body" class="input" required><br>        
+        <br><input type="submit" class="commentButton"></input>          
+      </form>
+  </div>
+
+
+{{/each}}
+</div>
